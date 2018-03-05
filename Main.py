@@ -5,10 +5,10 @@ import time
 import logging
 
 
-#This turns on logs in terminal (Quite distracting)
+# This turns on logs in terminal (Quite distracting)
 # logging.basicConfig(level=logging.INFO)
 
-#This is the twitter module, be sure to comment out the othe bot before using this!
+# This is the twitter module, be sure to comment out the othe bot before using this!
 # chatbot = ChatBot(
 #    "TwitterBot",
 #    logic_adapters=[
@@ -21,7 +21,7 @@ import logging
 #    twitter_access_token_secret=TWITTER["ACCESS_TOKEN_SECRET"],
 #    trainer="chatterbot.trainers.TwitterTrainer",
 #)
-#chatbot.train()
+# chatbot.train()
 
 
 chatbot = ChatBot(
