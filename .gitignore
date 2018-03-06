@@ -1,3 +1,4 @@
 
 .ropeproject/config.py
 *.sqlite3
+*.pyc

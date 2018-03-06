@@ -2,6 +2,7 @@ from chatterbot import ChatBot
 import time
 # import logging
 import speech_recognition as sr
+import pyttsx3
 
 # This turns on logs in terminal (Quite distracting)
 # logging.basicConfig(level=logging.INFO)
@@ -28,13 +29,16 @@ if (query_answer == "2"):
         r.adjust_for_ambient_noise(source)
     print("Set minimum energy threshold to {}".format(r.energy_threshold))
     with sr.Microphone() as source:
-        print("Speech recognition will begin in 3 second.")
-        time.sleep(3)
+        print("Speech recognition will begin in a moment.")
+        engine = pyttsx3.init()
+        engine.say('Hello there.')
+        engine.runAndWait()
         print("You may speak!")
         while True:
             audio = r.listen(source)
             try:
                 item = r.recognize_google(audio)
+                print("You: " + item)
             except sr.UnknownValueError:
                 print("Could not understand audio")
             except sr.RequestError as e:
@@ -44,8 +48,11 @@ if (query_answer == "2"):
                 time.sleep(2)
                 exit()
             else:
-                print(chatbot.get_response("" + item))
-                time.sleep(2)
+                response = chatbot.get_response("Chatbot: " + item)
+                print(response)
+                engine.say(response)
+                engine.runAndWait()
+                # time.sleep(2)
 else:
     # Get a response to an input statement
     while True:
